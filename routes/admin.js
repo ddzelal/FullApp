@@ -7,4 +7,9 @@ router.get("/create", (req, res) => {
   res.render("admin/adminCreateForm");
 });
 
+router.get("/create/city", (req, res) => {
+  res.render("admin/createCity");
+});
+
+router.post("/create/save", require("../controllers/admin/saveController"));
 module.exports = router;
