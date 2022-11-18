@@ -15,6 +15,7 @@ const loginController = (req, res) => {
       } else {
         if (docs.length === 1) {
           let user = docs[0];
+          req.session.user = user;
           if (user.role == "admin") {
             res.redirect("/admin");
           } else {
