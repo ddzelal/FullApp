@@ -14,7 +14,7 @@
       content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework"
     />
     <meta name="robots" content="noindex,nofollow" />
-    <title>Admin</title>
+    <title><%= name %></title>
     <!-- Favicon icon -->
     <link
       rel="icon"
@@ -152,10 +152,11 @@
                     <a class="dropdown-item" href="/admin/create">User</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="/admin/create/city">City</a>
+                    <a class="dropdown-item" href="/admin/create-city">City</a>
+                    <!-- <a class="dropdown-item" href="/admin/create/city">City</a> -->
                   </li>
                   <li>
-                    <a class="dropdown-item" href="/admin/create/product"
+                    <a class="dropdown-item" href="/admin/create-product"
                       >Product</a
                     >
                   </li>
@@ -500,21 +501,14 @@
                 </div>
                 <div class="comment-widgets scrollable">
                   <!-- Comment Row -->
+                  <%for (let i = 0; i < operator.length; i++){ %>
                   <div class="d-flex flex-row comment-row mt-0">
-                    <div class="p-2">
-                      <img
-                        src="../assets/images/users/1.jpg"
-                        alt="user"
-                        width="50"
-                        class="rounded-circle"
-                      />
-                    </div>
                     <div class="comment-text w-100">
-                      <h6 class="font-medium">James Anderson</h6>
-                      <span class="mb-3 d-block"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.
-                      </span>
+                      <h6 class="font-medium">
+                        <%= operator[i].first_name + " " + operator[i].last_name
+                        %>
+                      </h6>
+                     
                       <div class="comment-footer">
                         <span class="text-muted float-end">April 14, 2021</span>
                         <button
@@ -531,91 +525,16 @@
                         </button>
                         <button
                           type="button"
-                          class="btn btn-danger btn-sm text-white"
+                          class="btn btn-danger btn-sm text-white delete-user-btn"
+                          data-id="<%= operator[i]._id  %>"
                         >
                           Delete
                         </button>
                       </div>
                     </div>
                   </div>
+                  <% }%>
                   <!-- Comment Row -->
-                  <div class="d-flex flex-row comment-row">
-                    <div class="p-2">
-                      <img
-                        src="../assets/images/users/4.jpg"
-                        alt="user"
-                        width="50"
-                        class="rounded-circle"
-                      />
-                    </div>
-                    <div class="comment-text active w-100">
-                      <h6 class="font-medium">Michael Jorden</h6>
-                      <span class="mb-3 d-block"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.
-                      </span>
-                      <div class="comment-footer">
-                        <span class="text-muted float-end">May 10, 2021</span>
-                        <button
-                          type="button"
-                          class="btn btn-cyan btn-sm text-white"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-success btn-sm text-white"
-                        >
-                          Publish
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-danger btn-sm text-white"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Comment Row -->
-                  <div class="d-flex flex-row comment-row">
-                    <div class="p-2">
-                      <img
-                        src="../assets/images/users/5.jpg"
-                        alt="user"
-                        width="50"
-                        class="rounded-circle"
-                      />
-                    </div>
-                    <div class="comment-text w-100">
-                      <h6 class="font-medium">Johnathan Doeting</h6>
-                      <span class="mb-3 d-block"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.
-                      </span>
-                      <div class="comment-footer">
-                        <span class="text-muted float-end">August 1, 2021</span>
-                        <button
-                          type="button"
-                          class="btn btn-cyan btn-sm text-white"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-success btn-sm text-white"
-                        >
-                          Publish
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-danger btn-sm text-white"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
               <div class="card">
@@ -624,6 +543,9 @@
                 </div>
                 <div class="comment-widgets scrollable">
                   <!-- Comment Row -->
+                  <% for (let i = 0; i < products.length; i++)  { %>
+                    
+                
                   <div class="d-flex flex-row comment-row mt-0">
                     <div class="p-2">
                       <img
@@ -634,11 +556,8 @@
                       />
                     </div>
                     <div class="comment-text w-100">
-                      <h6 class="font-medium">James Anderson</h6>
-                      <span class="mb-3 d-block"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.
-                      </span>
+                      <h6 class="font-medium"><%= products[i].name + " " %></h6>
+                      
                       <div class="comment-footer">
                         <span class="text-muted float-end">April 14, 2021</span>
                         <button
@@ -662,84 +581,11 @@
                       </div>
                     </div>
                   </div>
+               <% } %>
                   <!-- Comment Row -->
-                  <div class="d-flex flex-row comment-row">
-                    <div class="p-2">
-                      <img
-                        src="../assets/images/users/4.jpg"
-                        alt="user"
-                        width="50"
-                        class="rounded-circle"
-                      />
-                    </div>
-                    <div class="comment-text active w-100">
-                      <h6 class="font-medium">Michael Jorden</h6>
-                      <span class="mb-3 d-block"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.
-                      </span>
-                      <div class="comment-footer">
-                        <span class="text-muted float-end">May 10, 2021</span>
-                        <button
-                          type="button"
-                          class="btn btn-cyan btn-sm text-white"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-success btn-sm text-white"
-                        >
-                          Publish
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-danger btn-sm text-white"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                 
                   <!-- Comment Row -->
-                  <div class="d-flex flex-row comment-row">
-                    <div class="p-2">
-                      <img
-                        src="../assets/images/users/5.jpg"
-                        alt="user"
-                        width="50"
-                        class="rounded-circle"
-                      />
-                    </div>
-                    <div class="comment-text w-100">
-                      <h6 class="font-medium">Johnathan Doeting</h6>
-                      <span class="mb-3 d-block"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.
-                      </span>
-                      <div class="comment-footer">
-                        <span class="text-muted float-end">August 1, 2021</span>
-                        <button
-                          type="button"
-                          class="btn btn-cyan btn-sm text-white"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-success btn-sm text-white"
-                        >
-                          Publish
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-danger btn-sm text-white"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                 
                 </div>
               </div>
               <!-- Card -->
@@ -1147,21 +993,11 @@
                 </div>
                 <div class="comment-widgets scrollable">
                   <!-- Comment Row -->
+                  <% for(let i=0; i<advisors.length; i++) {%>
                   <div class="d-flex flex-row comment-row mt-0">
-                    <div class="p-2">
-                      <img
-                        src="../assets/images/users/1.jpg"
-                        alt="user"
-                        width="50"
-                        class="rounded-circle"
-                      />
-                    </div>
                     <div class="comment-text w-100">
-                      <h6 class="font-medium">James Anderson</h6>
-                      <span class="mb-3 d-block"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.
-                      </span>
+                      <h6 class="font-medium"><%= advisors[i].first_name + " " + advisors[i].last_name %></h6>
+                      
                       <div class="comment-footer">
                         <span class="text-muted float-end">April 14, 2021</span>
                         <button
@@ -1184,85 +1020,10 @@
                         </button>
                       </div>
                     </div>
+                    <% } %>
                   </div>
                   <!-- Comment Row -->
-                  <div class="d-flex flex-row comment-row">
-                    <div class="p-2">
-                      <img
-                        src="../assets/images/users/4.jpg"
-                        alt="user"
-                        width="50"
-                        class="rounded-circle"
-                      />
-                    </div>
-                    <div class="comment-text active w-100">
-                      <h6 class="font-medium">Michael Jorden</h6>
-                      <span class="mb-3 d-block"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.
-                      </span>
-                      <div class="comment-footer">
-                        <span class="text-muted float-end">May 10, 2021</span>
-                        <button
-                          type="button"
-                          class="btn btn-cyan btn-sm text-white"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-success btn-sm text-white"
-                        >
-                          Publish
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-danger btn-sm text-white"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  </div>
                   <!-- Comment Row -->
-                  <div class="d-flex flex-row comment-row">
-                    <div class="p-2">
-                      <img
-                        src="../assets/images/users/5.jpg"
-                        alt="user"
-                        width="50"
-                        class="rounded-circle"
-                      />
-                    </div>
-                    <div class="comment-text w-100">
-                      <h6 class="font-medium">Johnathan Doeting</h6>
-                      <span class="mb-3 d-block"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.
-                      </span>
-                      <div class="comment-footer">
-                        <span class="text-muted float-end">August 1, 2021</span>
-                        <button
-                          type="button"
-                          class="btn btn-cyan btn-sm text-white"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-success btn-sm text-white"
-                        >
-                          Publish
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-danger btn-sm text-white"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
               <div class="card">
@@ -1271,21 +1032,12 @@
                 </div>
                 <div class="comment-widgets scrollable">
                   <!-- Comment Row -->
+                  <% for(i=0; i<city.length; i++) { %>
                   <div class="d-flex flex-row comment-row mt-0">
-                    <div class="p-2">
-                      <img
-                        src="../assets/images/users/1.jpg"
-                        alt="user"
-                        width="50"
-                        class="rounded-circle"
-                      />
-                    </div>
+                   
                     <div class="comment-text w-100">
-                      <h6 class="font-medium">James Anderson</h6>
-                      <span class="mb-3 d-block"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.
-                      </span>
+                      <h6 class="font-medium"><%= city[i].name + " " + city[i].zip %></h6>
+                     
                       <div class="comment-footer">
                         <span class="text-muted float-end">April 14, 2021</span>
                         <button
@@ -1309,84 +1061,11 @@
                       </div>
                     </div>
                   </div>
+                  <% } %>
                   <!-- Comment Row -->
-                  <div class="d-flex flex-row comment-row">
-                    <div class="p-2">
-                      <img
-                        src="../assets/images/users/4.jpg"
-                        alt="user"
-                        width="50"
-                        class="rounded-circle"
-                      />
-                    </div>
-                    <div class="comment-text active w-100">
-                      <h6 class="font-medium">Michael Jorden</h6>
-                      <span class="mb-3 d-block"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.
-                      </span>
-                      <div class="comment-footer">
-                        <span class="text-muted float-end">May 10, 2021</span>
-                        <button
-                          type="button"
-                          class="btn btn-cyan btn-sm text-white"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-success btn-sm text-white"
-                        >
-                          Publish
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-danger btn-sm text-white"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  
                   <!-- Comment Row -->
-                  <div class="d-flex flex-row comment-row">
-                    <div class="p-2">
-                      <img
-                        src="../assets/images/users/5.jpg"
-                        alt="user"
-                        width="50"
-                        class="rounded-circle"
-                      />
-                    </div>
-                    <div class="comment-text w-100">
-                      <h6 class="font-medium">Johnathan Doeting</h6>
-                      <span class="mb-3 d-block"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        type setting industry.
-                      </span>
-                      <div class="comment-footer">
-                        <span class="text-muted float-end">August 1, 2021</span>
-                        <button
-                          type="button"
-                          class="btn btn-cyan btn-sm text-white"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-success btn-sm text-white"
-                        >
-                          Publish
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-danger btn-sm text-white"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                 
                 </div>
               </div>
               <div class="card">
@@ -1921,5 +1600,21 @@
     <script src="../assets/libs/flot/jquery.flot.crosshair.js"></script>
     <script src="../assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../dist/js/pages/chart/chart-page-init.js"></script>
+    <script>
+      $(".delete-user-btn").on('click',function(){
+        let id = $(this).attr('data-id')
+        let potvrda = confirm("Are you sure?")
+        if(potvrda){
+          $.ajax({
+            url:`/admin/delete/user/${id}`
+          })
+          .then(res => {
+            if(res == "ok"){
+              window.location.href = "/admin"
+            }
+          })
+        }
+      })
+    </script>
   </body>
 </html>
