@@ -574,7 +574,8 @@
                         </button>
                         <button
                           type="button"
-                          class="btn btn-danger btn-sm text-white"
+                          class="btn btn-danger btn-sm text-white delete-product-btn"
+                          data-id="<%= products[i]._id %>"
                         >
                           Delete
                         </button>
@@ -1014,7 +1015,8 @@
                         </button>
                         <button
                           type="button"
-                          class="btn btn-danger btn-sm text-white"
+                          class="btn btn-danger btn-sm text-white delete-user-btn"
+                          data-id="<%= advisors[i]._id %>"
                         >
                           Delete
                         </button>
@@ -1054,7 +1056,8 @@
                         </button>
                         <button
                           type="button"
-                          class="btn btn-danger btn-sm text-white"
+                          class="btn btn-danger btn-sm text-white delete-city-btn"
+                          data-id="<%= city[i]._id %>"
                         >
                           Delete
                         </button>
@@ -1607,6 +1610,36 @@
         if(potvrda){
           $.ajax({
             url:`/admin/delete/user/${id}`
+          })
+          .then(res => {
+            if(res == "ok"){
+              window.location.href = "/admin"
+            }
+          })
+        }
+      })
+
+      $(".delete-product-btn").on('click',function(){
+        let id = $(this).attr('data-id')
+        let potvrda = confirm("Are you sure?")
+        if(potvrda){
+          $.ajax({
+            url:`/admin/delete/product/${id}`
+          })
+          .then(res => {
+            if(res == "ok"){
+              window.location.href = "/admin"
+            }
+          })
+        }
+      })
+
+      $(".delete-city-btn").on('click',function(){
+        let id = $(this).attr('data-id')
+        let potvrda = confirm("Are you sure?")
+        if(potvrda){
+          $.ajax({
+            url:`/admin/delete/city/${id}`
           })
           .then(res => {
             if(res == "ok"){

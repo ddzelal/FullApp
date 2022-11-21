@@ -18,6 +18,10 @@ const loginController = (req, res) => {
           req.session.user = user;
           if (user.role == "admin") {
             res.redirect("/admin");
+          } else if (user.role == "operator") {
+            res.redirect("/operator");
+          } else if (user.role == "advisors") {
+            res.redirect("/advisor");
           } else {
             res.redirect("/");
           }

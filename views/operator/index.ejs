@@ -14,7 +14,7 @@
       content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework"
     />
     <meta name="robots" content="noindex,nofollow" />
-    <title>Admin</title>
+    <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
     <!-- Favicon icon -->
     <link
       rel="icon"
@@ -23,8 +23,26 @@
       href="../assets/images/favicon.png"
     />
     <!-- Custom CSS -->
-    <link href="../assets/libs/flot/css/float-chart.css" rel="stylesheet" />
-    <!-- Custom CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/libs/select2/dist/css/select2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/libs/jquery-minicolors/jquery.minicolors.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../assets/libs/quill/dist/quill.snow.css"
+    />
     <link href="../dist/css/style.min.css" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -131,55 +149,10 @@
               <!-- ============================================================== -->
               <!-- create new -->
               <!-- ============================================================== -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <span class="d-none d-md-block"
-                    >Create New <i class="fa fa-angle-down"></i
-                  ></span>
-                  <span class="d-block d-md-none"
-                    ><i class="fa fa-plus"></i
-                  ></span>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a class="dropdown-item" href="/admin/create">User</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="/admin/create-city">City</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="/admin/create-product"
-                      >Product</a
-                    >
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                </ul>
-              </li>
+
               <!-- ============================================================== -->
               <!-- Search -->
               <!-- ============================================================== -->
-              <li class="nav-item search-box">
-                <a
-                  class="nav-link waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  ><i class="mdi mdi-magnify fs-4"></i
-                ></a>
-                <form class="app-search position-absolute">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search &amp; enter"
-                  />
-                  <a class="srh-btn"><i class="mdi mdi-window-close"></i></a>
-                </form>
-              </li>
             </ul>
             <!-- ============================================================== -->
             <!-- Right side toggle and nav items -->
@@ -374,10 +347,21 @@
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/admin"
+                  href="/operator"
                   aria-expanded="false"
                   ><i class="mdi mdi-view-dashboard"></i
                   ><span class="hide-menu">Dashboard</span></a
+                >
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="charts.html"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-chart-bar"></i
+                  ><span class="hide-menu"
+                    >Terms<span> <%= numberTerms%></span>
+                  </span></a
                 >
               </li>
             </ul>
@@ -393,46 +377,48 @@
       <!-- Page wrapper  -->
       <!-- ============================================================== -->
       <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-          <div class="row">
-            <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Create User</h4>
+        <form action="/operator/newTerms" method="post">
+          <!-- ============================================================== -->
+          <!-- Bread crumb and right sidebar toggle -->
+          <!-- ============================================================== -->
+          <div class="page-breadcrumb">
+            <div class="row">
+              <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">New appointment</h4>
+                <div class="ms-auto text-end">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-6 offset-3">
-              <div class="card">
-                <form
-                  class="form-horizontal"
-                  action="/admin/create/save"
-                  method="post"
-                >
+          <!-- ============================================================== -->
+          <!-- End Bread crumb and right sidebar toggle -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- Container fluid  -->
+          <!-- ============================================================== -->
+          <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Personal Info</h4>
+                    <h4 class="card-title">Client Info</h4>
                     <div class="form-group row">
                       <label
                         for="fname"
                         class="col-sm-3 text-end control-label col-form-label"
-                        >First Name</label
+                        >Client Name</label
                       >
                       <div class="col-sm-9">
                         <input
+                          name="client_name"
                           type="text"
                           class="form-control"
-                          id="first_name"
-                          name="first_name"
-                          placeholder="First Name Here"
+                          id="fname"
+                          placeholder="Client Name Here"
                         />
                       </div>
                     </div>
@@ -440,15 +426,15 @@
                       <label
                         for="lname"
                         class="col-sm-3 text-end control-label col-form-label"
-                        >Last Name</label
+                        >Client LastName</label
                       >
                       <div class="col-sm-9">
                         <input
+                          name="client_lastname"
                           type="text"
                           class="form-control"
-                          id="last_name"
-                          name="last_name"
-                          placeholder="Last Name Here"
+                          id="lname"
+                          placeholder="Client Last Name Here"
                         />
                       </div>
                     </div>
@@ -456,56 +442,230 @@
                       <label
                         for="lname"
                         class="col-sm-3 text-end control-label col-form-label"
-                        >Password</label
+                        >Client years</label
                       >
                       <div class="col-sm-9">
                         <input
-                          name="password"
-                          type="password"
+                          type="text"
                           class="form-control"
-                          id="password"
-                          placeholder="Password Here"
+                          id="lname"
+                          placeholder="Client years Here"
+                          name="client_years"
                         />
                       </div>
                     </div>
-
+                    <div class="form-group row">
+                      <label
+                        for="email1"
+                        class="col-sm-3 text-end control-label col-form-label"
+                        >Husband</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="email1"
+                          placeholder="Husband Name Here"
+                          name="husband_name"
+                        />
+                      </div>
+                    </div>
                     <div class="form-group row">
                       <label
                         for="cono1"
                         class="col-sm-3 text-end control-label col-form-label"
-                        >Role</label
+                        >Husband Last Name</label
                       >
                       <div class="col-sm-9">
-                        <select name="role" class="form-control">
-                          <option value="operator">Operator</option>
-                          <option value="advisors">Advisors</option>
-                          <option value="admin">Admin</option>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="cono1"
+                          placeholder="Husband Last Name Here"
+                          name="husband_lastname"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label
+                        for="cono1"
+                        class="col-sm-3 text-end control-label col-form-label"
+                        >Husband Years</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="cono1"
+                          placeholder="Husband Years Here"
+                          name="husband_years"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-grup row">
+                      <label for="">Phone</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="fix_phone"
+                        placeholder="Fix phone"
+                      />
+                    </div>
+                    <div class="form-grup row">
+                      <label for="">Mobile Phone</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="mobile_phone"
+                        placeholder="Mobile phone"
+                      />
+                    </div>
+                    <div class="form-grup row">
+                      <label for="">Address</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="address"
+                        placeholder="Address"
+                      />
+                    </div>
+                  </div>
+                  <div class="border-top">
+                    <div class="card-body"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title mb-0">Appointments info</h5>
+                    <div class="form-group mt-3">
+                      <label
+                        >Date
+                        <small class="text-muted">dd/mm/yyyy</small></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control date-inputmask"
+                        id="date-mask"
+                        placeholder="Enter Date"
+                        name="date_appointments"
+                      />
+                    </div>
+                    <div class="form-group mt-3">
+                      <label
+                        >Time <small class="text-muted">H/M/am-pm</small></label
+                      >
+                      <input
+                        type="time"
+                        class="form-control date-inputmask"
+                        id="date-mask"
+                        name="time_appointments"
+                      />
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 m-t-15">Advisor</label>
+                      <div class="col-md-9">
+                        <select name="advisor" class="form-control">
+                          <% for(let i = 0; i < advisor.length; i++)  { %> 
+                          <option 
+                          value="<%=advisor[i].first_name + " " + advisor[i].last_name %>">
+                            <%=advisor[i].first_name + " " + advisor[i].last_name%></option>
+                         <%  } %>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 m-t-15">Work place</label>
+                      <div class="col-md-9">
+                        <select name="city" class="form-control">
+                            <% for(let i = 0; i < city.length; i++)  { %> 
+                                <option 
+                                value="<%=city[i].name %>">
+                                  <%=city[i].name%></option>
+                               <%  } %>
                         </select>
                       </div>
                     </div>
                   </div>
-                  <div class="border-top">
-                    <div class="card-body">
-                      <button type="submit" class="btn btn-primary">
-                        Submit
-                      </button>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">More info</h5>
+                    <div class="row mb-3 align-items-center">
+                      <div class="col-lg-3 col-md-12 text-end">
+                        <span>Children</span>
+                      </div>
+                      <div class="col-lg-9 col-md-12">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Children name"
+                          name="children"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                      <div class="col-lg-3 col-md-12 text-end">
+                        <span>Operations</span>
+                      </div>
+                      <div class="col-lg-9 col-md-12">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Operations"
+                          name="operations"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                      <div class="col-lg-3 col-md-12 text-end">
+                        <span>Therapy</span>
+                      </div>
+                      <div class="col-lg-9 col-md-12">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Therapy"
+                          name="therapy"
+                        />
+                      </div>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
+            <!-- editor -->
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <h4 class="card-title">Note</h4>
+                  <input type="text" class="form-control" name="note" />
+                </div>
+              </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
           </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer text-center">
-          All Rights Reserved by Matrix-admin. Designed and Developed by
-          <a href="https://www.wrappixel.com">WrapPixel</a>.
-        </footer>
+          <!-- ============================================================== -->
+          <!-- End Container fluid  -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- footer -->
+          <!-- ============================================================== -->
+          <footer class="footer text-center">
+            All Rights Reserved by Matrix-admin. Designed and Developed by
+            <a href="https://www.wrappixel.com">WrapPixel</a>.
+          </footer>
+        </form>
         <!-- ============================================================== -->
         <!-- End footer -->
         <!-- ============================================================== -->
@@ -523,6 +683,7 @@
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
     <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
     <script src="../assets/extra-libs/sparkline/sparkline.js"></script>
     <!--Wave Effects -->
@@ -531,16 +692,57 @@
     <script src="../dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="../dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <!-- <script src="../dist/js/pages/dashboards/dashboard1.js"></script> -->
-    <!-- Charts js Files -->
-    <script src="../assets/libs/flot/excanvas.js"></script>
-    <script src="../assets/libs/flot/jquery.flot.js"></script>
-    <script src="../assets/libs/flot/jquery.flot.pie.js"></script>
-    <script src="../assets/libs/flot/jquery.flot.time.js"></script>
-    <script src="../assets/libs/flot/jquery.flot.stack.js"></script>
-    <script src="../assets/libs/flot/jquery.flot.crosshair.js"></script>
-    <script src="../assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-    <script src="../dist/js/pages/chart/chart-page-init.js"></script>
+    <!-- This Page JS -->
+    <script src="../assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="../dist/js/pages/mask/mask.init.js"></script>
+    <script src="../assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="../assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="../assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
+    <script src="../assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
+    <script src="../assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
+    <script src="../assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <script src="../assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="../assets/libs/quill/dist/quill.min.js"></script>
+    <script>
+      //***********************************//
+      // For select 2
+      //***********************************//
+      $(".select2").select2();
+
+      /*colorpicker*/
+      $(".demo").each(function () {
+        //
+        // Dear reader, it's actually very easy to initialize MiniColors. For example:
+        //
+        //  $(selector).minicolors();
+        //
+        // The way I've done it below is just for the demo, so don't get confused
+        // by it. Also, data- attributes aren't supported at this time...they're
+        // only used for this demo.
+        //
+        $(this).minicolors({
+          control: $(this).attr("data-control") || "hue",
+          position: $(this).attr("data-position") || "bottom left",
+
+          change: function (value, opacity) {
+            if (!value) return;
+            if (opacity) value += ", " + opacity;
+            if (typeof console === "object") {
+              console.log(value);
+            }
+          },
+          theme: "bootstrap",
+        });
+      });
+      /*datwpicker*/
+      jQuery(".mydatepicker").datepicker();
+      jQuery("#datepicker-autoclose").datepicker({
+        autoclose: true,
+        todayHighlight: true,
+      });
+      var quill = new Quill("#editor", {
+        theme: "snow",
+      });
+    </script>
   </body>
 </html>
