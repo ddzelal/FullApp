@@ -1001,12 +1001,13 @@
                       
                       <div class="comment-footer">
                         <span class="text-muted float-end">April 14, 2021</span>
-                        <button
+                        <a
+                          href="/admin/advisor-terms/<%= advisors[i].first_name + " " + advisors[i].last_name  %> "
                           type="button"
                           class="btn btn-cyan btn-sm text-white"
                         >
-                          Edit
-                        </button>
+                          Terms
+                      </a>
                         <button
                           type="button"
                           class="btn btn-success btn-sm text-white"

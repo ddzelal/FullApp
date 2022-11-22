@@ -38,6 +38,13 @@ router.get(
   require("../controllers/admin/deleteCityController")
 );
 
+//savetnici
+
+router.get(
+  "/advisor-terms/:name",
+  require("../controllers/admin/advisorTermsController")
+);
+
 function checkAdmin(req, res, next) {
   let user = req.session.user;
   if (user) {
