@@ -11,7 +11,7 @@ router.post("/notice/:id", require("../controllers/advisor/noticeController"));
 function checkAdvisor(req, res, next) {
   let user = req.session.user;
   if (user) {
-    if (user.role == "advisor") {
+    if (user.role == "advisors") {
       next();
     } else {
       res.redirect("/");
