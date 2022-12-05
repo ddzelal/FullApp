@@ -36,6 +36,6 @@ app.set("view engine", "ejs");
 
 app.use("/", routes);
 
-app.listen(80, () => {
+app.listen(3000, () => {
   console.log("listening to port 3000");
 });
